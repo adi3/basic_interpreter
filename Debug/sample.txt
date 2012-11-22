@@ -1,0 +1,11 @@
+8 rem Lists Fibonacci sequence below input number.
+10 input x
+11 n1=0
+12 n2=1
+13 if n1>x then 25
+14 print n1
+15 n3=n1+n2
+16 n1=n2
+17 n2=n3
+18 goto 13
+25 end

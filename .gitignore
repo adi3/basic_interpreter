@@ -1,0 +1,20 @@
+/BASICInterpreter
+
+# Compiled Object files
+*.suo
+*.slo
+*.lo
+*.o
+*.ncb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+*.ilk
+*.pdb
