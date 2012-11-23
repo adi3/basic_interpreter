@@ -15,14 +15,17 @@ using namespace std;
 /* Static constants */
 static const double COLUMN_WIDTH = 400;				//WINDOW_WIDTH/2
 static const double COLUMN_HEIGHT =	220;			//WINDOW_HEIGHT - 80
-static const double PRINT_HEIGHT = COLUMN_HEIGHT + 30;
+static const string BG_FILE = "bg.jpg";
+static const double INIT_HEIGHT = 55;
+static const double PRINT_HEIGHT = COLUMN_HEIGHT + 25;
+
 
 /* Global variables keeping track of graphics order for all elements */
 int orderB = 0;			// Y-coordinate for Before Execution column
 int orderA = 0;			// Y-coordinate for After Execution column
 
 Statement::Statement() {
-   /* Empty */
+	setColor("#fbcc62");
 }
 
 Statement::~Statement() {
@@ -145,18 +148,11 @@ void PrintStmt::printExps(EvalState & state){
  * Execution' column in graphics window. 
  */
 void PrintStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -170,13 +166,10 @@ void PrintStmt::handleGraphicsB(){
  */
 void PrintStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }
 
@@ -224,18 +217,11 @@ void RemStmt::execute(EvalState & state) {
  * Execution' column in graphics window. 
  */
 void RemStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -248,13 +234,10 @@ void RemStmt::handleGraphicsB(){
  */
 void RemStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }
 
@@ -311,18 +294,11 @@ void InputStmt::execute(EvalState & state) {
  * Execution' column in graphics window. 
  */
 void InputStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -335,13 +311,10 @@ void InputStmt::handleGraphicsB(){
  */
 void InputStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }
 
@@ -399,18 +372,11 @@ void LetStmt::execute(EvalState & state) {
  * Execution' column in graphics window. 
  */
 void LetStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -423,13 +389,10 @@ void LetStmt::handleGraphicsB(){
  */
 void LetStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }
 
@@ -481,18 +444,11 @@ void GotoStmt::execute(EvalState & state) {
  * Execution' column in graphics window. 
  */
 void GotoStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -505,13 +461,10 @@ void GotoStmt::handleGraphicsB(){
  */
 void GotoStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }
 
@@ -627,18 +580,11 @@ void IfStmt::displayResult(bool result, EvalState & state){
  * Execution' column in graphics window. 
  */
 void IfStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -651,13 +597,10 @@ void IfStmt::handleGraphicsB(){
  */
 void IfStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }
 
@@ -704,18 +647,11 @@ void EndStmt::execute(EvalState & state) {
  * Execution' column in graphics window. 
  */
 void EndStmt::handleGraphicsB(){
-	if (getColor() == "#FFFFFF"){
-		setColor("black");
-		orderA = orderB = 0;
-	}
 	if (orderB > PRINT_HEIGHT) {
+		drawImage(BG_FILE, 0, 45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderB = 0;
-		drawRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(0,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderB == 0) orderB = 50;
+	if (orderB == 0) orderB = INIT_HEIGHT;
 	orderB += 15;
 }
 
@@ -728,12 +664,9 @@ void EndStmt::handleGraphicsB(){
  */
 void EndStmt::handleGraphicsA(){
 	if (orderA > PRINT_HEIGHT) {
+		drawImage(BG_FILE, getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
 		orderA = 0;
-		drawRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("white");
-		fillRect(getWindowWidth()/2 + 10,45, COLUMN_WIDTH, COLUMN_HEIGHT);
-		setColor("black");
 	}
-	if (orderA == 0) orderA = 50;
+	if (orderA == 0) orderA = INIT_HEIGHT;
 	orderA += 15;
 }

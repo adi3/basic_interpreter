@@ -91,6 +91,7 @@ namespace Win32{
 /* Static constants */
 static const int WINDOW_WIDTH = 800;
 static const int WINDOW_HEIGHT = 300;
+static const string BG_FILE = "bg.jpg";
 
 /* Function prototypes */
 
@@ -143,21 +144,23 @@ int main() {
 void genGraphics() {
    initGraphics(WINDOW_WIDTH, WINDOW_HEIGHT);
    setWindowTitle("BASIC Interpreter | Debugger");
+   drawImage(BG_FILE, 0, 0);
 
-   drawLine(0, 12, WINDOW_WIDTH, 12);
-   drawLine(WINDOW_WIDTH/4 - getStringWidth("BEFORE EXECUTION")/2, 32,
-			WINDOW_WIDTH/4 + getStringWidth("BEFORE EXECUTION")/2, 32);
-   drawLine(3*WINDOW_WIDTH/4 - getStringWidth("AFTER EXECUTION")/2, 32,
-			3*WINDOW_WIDTH/4 + getStringWidth("AFTER EXECUTION")/2, 32);
-   drawLine(WINDOW_WIDTH/2, 20, WINDOW_WIDTH/2, WINDOW_HEIGHT-20);
-   drawLine(0, WINDOW_HEIGHT-15, WINDOW_WIDTH, WINDOW_HEIGHT-15);
+   setColor("#fbcc62");
+   drawLine(0, 20, WINDOW_WIDTH, 20);
+   drawLine(WINDOW_WIDTH/4 - getStringWidth("BEFORE EXECUTION")/2, 40,
+			WINDOW_WIDTH/4 + getStringWidth("BEFORE EXECUTION")/2, 40);
+   drawLine(3*WINDOW_WIDTH/4 - getStringWidth("AFTER EXECUTION")/2, 40,
+			3*WINDOW_WIDTH/4 + getStringWidth("AFTER EXECUTION")/2, 40);
+   drawLine(WINDOW_WIDTH/2, 25, WINDOW_WIDTH/2, WINDOW_HEIGHT-25);
+   drawLine(0, WINDOW_HEIGHT-20, WINDOW_WIDTH, WINDOW_HEIGHT-20);
    drawString("PROGRAM STATE", (WINDOW_WIDTH - 
-				getStringWidth("PROGRAM STATE"))/2, 10);
+				getStringWidth("PROGRAM STATE"))/2, 15);
    drawString("BEFORE EXECUTION", WINDOW_WIDTH/4 - 
-				getStringWidth("BEFORE EXECUTION")/2, 30);
+				getStringWidth("BEFORE EXECUTION")/2, 38);
    drawString("AFTER EXECUTION", 3*WINDOW_WIDTH/4 - 
-				getStringWidth("AFTER EXECUTION")/2, 30);
-   drawString("Current Line: ", 5, WINDOW_HEIGHT-2);
+				getStringWidth("AFTER EXECUTION")/2, 38);
+   drawString("Current Line: ", 5, WINDOW_HEIGHT-5);
 }
 
 /*
@@ -327,12 +330,8 @@ void listProgram(Program & program, int index, int end){
  * (white) and begin printing graphics from initial points.
  */
 void clearGraphics(){
-   drawRect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
-   setColor("white");
-   fillRect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
-   setColor("black");
+   drawImage(BG_FILE, 0, 0);
    genGraphics();
-   setColor("white");
 }
 
 /*
@@ -350,11 +349,11 @@ void clearGraphics(){
 void run(Program & program, EvalState & state){
 	reloadCurrentLineGraphics();
 	double order = getStringWidth("Current Line: ") + 5;
-	drawString("START -> ", order + 5, (WINDOW_HEIGHT-2));
+	drawString("START -> ", order + 5, (WINDOW_HEIGHT-5));
 	order += getStringWidth("START -> ") + 5;
 	int index = program.getFirstLineNumber();
 	while(index != -1){
-		drawString(integerToString(index) + " -> ", order, (WINDOW_HEIGHT-2));
+		drawString(integerToString(index) + " -> ", order, (WINDOW_HEIGHT-5));
 		order += 30;
 		program.getParsedStatement(index)->execute(state);
 		if(state.getNextLine() != NULL) {
@@ -368,7 +367,7 @@ void run(Program & program, EvalState & state){
 		}
 	}
 	cout << endl;
-	drawString("END!", order + 5, (getWindowHeight()-2));
+	drawString("END!", order + 5, (getWindowHeight()-5));
 }
 
 /*
@@ -385,11 +384,11 @@ void run(Program & program, EvalState & state){
 void debug(Program & program, EvalState & state){
 	reloadCurrentLineGraphics();
 	double order = getStringWidth("Current Line: ") + 5;
-	drawString("START -> ", order + 5, (WINDOW_HEIGHT-2));
+	drawString("START -> ", order + 5, (WINDOW_HEIGHT-5));
 	order += getStringWidth("START -> ") + 5;
 	int index = program.getFirstLineNumber();
 	while(index != -1){
-		drawString(integerToString(index) + " -> ", order, (getWindowHeight()-2));
+		drawString(integerToString(index) + " -> ", order, (getWindowHeight()-5));
 		order += 30;
 		program.getParsedStatement(index)->execute(state);
 		if(state.getNextLine() != NULL) {
@@ -415,11 +414,8 @@ void debug(Program & program, EvalState & state){
  * to give an effect of graphics reloading.
  */
 void reloadCurrentLineGraphics(){
-	drawRect(0, WINDOW_HEIGHT-14, WINDOW_WIDTH, 14);
-	setColor("white");
-	fillRect(0, WINDOW_HEIGHT-14, WINDOW_WIDTH, 14);
-	setColor("black");
-	drawString("Current Line: ", 5, (WINDOW_HEIGHT-2));
+	drawImage(BG_FILE, 0, WINDOW_HEIGHT-14, WINDOW_WIDTH, 14);
+	drawString("Current Line: ", 5, (WINDOW_HEIGHT-5));
 }
 
 /*
