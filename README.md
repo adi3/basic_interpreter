@@ -2,7 +2,7 @@
 
 A tiny but powerful interpreter that allows a user to code, save and run programs in BASIC. The commands and statements accepted by the app are documented here.
 
-### Commands
+## Commands
 
 * **SAVE**: Saves the current program to a text file
 * **OLD**: Loads a previous program from a text file
@@ -13,7 +13,7 @@ A tiny but powerful interpreter that allows a user to code, save and run program
 * **HELP**: Displays help information
 * **QUIT**: Exits the interpreter
 
-### Statements
+## Statements
 
 * **REM** - *[Usage: REM exp]*: Used for comments.
 * **LET** - *[Usage: LET var = exp]*: Assignment statement. Assigns the value of the expression to the variable, replacing any previous value.
@@ -23,7 +23,7 @@ A tiny but powerful interpreter that allows a user to code, save and run program
 * **IF** - *[Usage: IF exp1 op exp2 THEN n]*: Conditional operator op accepts =, <, and > to compare exp1 and exp2. If condition holds, executes line n. If not, program executes the next stored line.
 * **END** - *[Usage: END]*: Halts program execution.
 
-### Features
+## Features
 
 * All commands and statements are case-insensitive.
 * The minus sign (-) can be used both as a unary and a binary operator.
