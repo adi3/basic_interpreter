@@ -28,7 +28,7 @@ A tiny but powerful interpreter that allows a user to code, save and run program
 * All commands and statements are case-insensitive.
 * The minus sign (-) can be used both as a unary and a binary operator.
 * LET statement is optional. Assignment works either way.
-* PRINT statement accepts an optional beginning with a string bound by "".
+* PRINT statement accepts an optional beginning with a string bound by " ".
 * PRINT statement accepts a list of values/experessions/ variables separated by a comma.
 * Program works with floating-point numbers too.
 * LIST command accepts an optional range for listing only a part of the program (eg, LIST 50-80).
@@ -37,5 +37,5 @@ A tiny but powerful interpreter that allows a user to code, save and run program
 * program execution.
 * CLEAR command resets the graphical debugger to original state, apart from clearing stored program.
 * A debug mode that allows users to run through the program line by line.
-* A print() function in program.cpp to show program structure in console.
+* A print() function in *program.cpp* to show program structure in console.
 * Typing in an already existing line number with a blank expression removes that line from the program.
